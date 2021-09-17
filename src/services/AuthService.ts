@@ -7,25 +7,25 @@ const baseURL = config.authService;
 const api = apiAdapter(baseURL);
 const router = Router();
 
-router.get("/Auth/Health", auth, verifyAdmin, (req, res) => {
+router.get("/auth/health", auth, verifyAdmin, (req, res) => {
   api.get(req.path).then(resp => {
     res.send(resp.data);
   });
 });
 
-router.post("/Auth/Login", auth, rateLimiter, (req, res) => {
+router.post("/auth/login", auth, rateLimiter, (req, res) => {
   api.post(req.path).then(resp => {
     res.send(resp.data);
   });
 });
 
-router.post("/Auth/Register", auth, verifyAdmin, (req, res) => {
+router.post("/auth/register", auth, verifyAdmin, (req, res) => {
   api.post(req.path).then(resp => {
     res.send(resp.data);
   });
 });
 
-router.get("/Auth/token", largeLimiter, (req, res) => {
+router.get("/auth/token", largeLimiter, (req, res) => {
   api.post(req.path).then(resp => {
     res.send(resp.data);
   });
