@@ -1,4 +1,5 @@
+import { config } from "../config";
 export const user = {
-  GUEST: 0,
-  ADMIN: 1,
+  GUEST: config.guestStatus,
+  ADMIN: config.adminStatus,
 };

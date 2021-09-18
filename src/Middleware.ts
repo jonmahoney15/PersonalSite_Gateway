@@ -28,8 +28,9 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
         });
     }
 
-    return next();
+    next();
   } catch (err: Error | any) {
+    console.log("auth failed");
     return res.status(500).json({ Status: "Error", message: "Error: " + err.message });
   }
 };
@@ -68,6 +69,7 @@ export const verifyAdmin = async (
 
     return next();
   } catch (err: Error | any) {
+    console.log("verify failed");
     return res.status(500).json({ Status: "Error", message: err.message });
   }
 };

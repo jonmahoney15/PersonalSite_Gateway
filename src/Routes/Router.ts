@@ -7,7 +7,7 @@ import { ContactService } from "../services/ContactService";
 const router = Router();
 
 router.get("/health", auth, verifyAdmin, (req, res) =>
-  res.send({ Status: "Success", message: "Gateway is Healthy" })
+  res.status(200).json({ Status: "Success", message: "Gateway is Healthy" })
 );
 
 router.use(AuthService);
