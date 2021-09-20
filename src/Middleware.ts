@@ -81,7 +81,7 @@ export const rateLimiter = rateLimit({
 });
 
 export const largeLimiter = rateLimit({
-  max: 50,
+  max: 250,
   windowMs: 24 * 60 * 60 * 1000, //one day
   message: "Too many attempts!",
 });
