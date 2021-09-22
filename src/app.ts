@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(pinoHttp({ logger }));
 
-app.use("/api", Router);
+app.use("/", Router);
 
 app.use([errorMiddleware, notFoundMiddleware]);
 
