@@ -21,7 +21,6 @@ jobs:
       PROJECT_ID: ${{ secrets.PROJECT_ID }}
       REGION: ${{ secrets.REGION }}
       ENV_VAR: ${{ secrets.ENV_VAR }}
-      CONNECTOR: ${{ secrets.CONNECTOR }}
 
     steps:
       - uses: actions/checkout@v2
@@ -39,5 +38,4 @@ jobs:
             --image gcr.io/$PROJECT_ID/$SERVICE_NAME:latest \
             --region $REGION \
             --set-env-vars $ENV_VAR \
-            --vpc-connector $CONNECTOR \
             --allow-unauthenticated
