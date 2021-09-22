@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { auth, verifyAdmin, rateLimiter, largeLimiter } from "../Middleware";
+import { auth, verifyAdmin, rateLimiter } from "../Middleware";
 import { apiAdapter } from "../util/apiAdapter";
 import { config }  from '../config';
 
@@ -29,7 +29,7 @@ router.post("/auth/register", auth, verifyAdmin, (req, res) => {
   });
 });
 
-router.get("/auth/token", largeLimiter, (req, res) => {
+router.get("/auth/token", (req, res) => {
   console.log(req.path);
   api.get(req.path).then(resp => {
     res.send(resp.data);
