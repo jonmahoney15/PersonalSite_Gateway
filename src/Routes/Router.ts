@@ -14,8 +14,4 @@ router.use(AuthService);
 router.use(BlogService);
 router.use(ContactService);
 
-router.get('*', (req, res) => {
-  res.status(404).json({Status: 'Failure', message: 'Route does not exist'});
-});
-
 export { router as Router };

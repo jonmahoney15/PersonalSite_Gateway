@@ -15,7 +15,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(pinoHttp({ logger }));
 
-app.use("/", Router);
+app.use("/api", Router);
+
+app.use('*', (req, res) => {
+  console.log('Wrong route');
+  res.status(404).json({Status: 'Failure', message: 'Route does not exist'});
+});
 
 app.use([errorMiddleware, notFoundMiddleware]);
 
