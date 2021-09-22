@@ -27,9 +27,11 @@ router.post("/blog/createpost", auth, verifyAdmin, upload.single('file'), (req, 
   api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   const formData = new FormData();
   formData.append('Post', JSON.stringify(JSON.parse(req.body.Post)));
-  formData.append('file', file.buffer, file.originalname)
+  //@ts-ignore 
+  formData.append('file', file.buffer, file.originalname);
   api.post(req.path, formData, {
       headers: {
+          //@ts-ignore
           'Content-Type': `multipart/form-data; boundary=${formData._boundary}`
       }
   }).then(resp => {

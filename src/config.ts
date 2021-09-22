@@ -4,7 +4,7 @@ import { loadConfig } from "./util/load-config";
 
 export interface Env {
   NODE_ENV: string;
-  PORT: number;
+  PORT_NUM: number;
   JWT_SECRET: string;
   ADMIN_STATUS: string;
   GUEST_STATUS: string;
@@ -18,7 +18,7 @@ const schema = Joi.object()
     NODE_ENV: Joi.string()
       .valid("development", "test", "production")
       .default("development"),
-    PORT: Joi.number().port().default(3000),
+    PORT_NUM: Joi.number().port().default(3000),
     JWT_SECRET: Joi.string(),
     ADMIN_STATUS: Joi.string(),
     GUEST_STATUS: Joi.string(),
@@ -32,7 +32,7 @@ const env = loadConfig(schema);
 
 export const config = {
   env: env.NODE_ENV,
-  port: env.PORT,
+  port: env.PORT_NUM,
   jwtSecret: env.JWT_SECRET,
   adminStatus: env.ADMIN_STATUS,
   guestStatus: env.GUEST_STATUS,

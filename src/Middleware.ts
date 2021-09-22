@@ -28,9 +28,9 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
         });
     }
 
-    next();
+    return next();
   } catch (err: Error | any) {
-    console.log("auth failed");
+    
     return res.status(500).json({ Status: "Error", message: "Error: " + err.message });
   }
 };

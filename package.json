@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development ts-node-dev --respawn --pretty --transpile-only --exit-child src/index.ts",
     "build": "NODE_ENV=production tsc --project .",
-    "start": "NODE_ENV=production node src/",
-    "format": "prettier . --write",
-    "lint": "eslint . --fix"
+    "start": "NODE_ENV=production node index.js"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
