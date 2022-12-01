@@ -8,7 +8,9 @@ const api = apiAdapter(baseURL);
 const router = Router();
 
 router.post("/auth/login", auth, rateLimiter, (req, res) => {
-  api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
+  const authToken?: string | number | boolean = req.header('x-auth-token');
+  api.defaults.headers.common['x-auth-token'] = authToken;
+  
   api.post(req.path, req.body).then(resp => {
     res.send(resp.data);
   });
@@ -22,7 +24,6 @@ router.post("/auth/register", auth, verifyAdmin, (req, res) => {
 });
 
 router.get("/auth/token", (req, res) => {
-  console.log(req.path);
   api.get(req.path).then(resp => {
     res.send(resp.data);
   });

@@ -12,7 +12,6 @@ const router = Router();
 
 router.post("/blog/createpost", auth, verifyAdmin, upload.single('file'), (req, res) => { 
   const file = req.file;
-
   api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   
   const formData = new FormData();
@@ -60,3 +59,4 @@ router.post("/blog/removepost", auth, verifyAdmin, (req, res) => {
 });
 
 export { router as BlogService };
+
