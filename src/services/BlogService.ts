@@ -12,6 +12,7 @@ const router = Router();
 
 router.post("/blog/createpost", auth, verifyAdmin, upload.single('file'), (req, res) => { 
   const file = req.file;
+  //@ts-ignore
   api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   
   const formData = new FormData();
@@ -32,6 +33,7 @@ router.post("/blog/createpost", auth, verifyAdmin, upload.single('file'), (req, 
 });
 
 router.get("/blog/posts", auth, largeLimiter, (req, res) => { 
+  //@ts-ignore
   api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   api.get(req.path).then(resp => {
     res.send(resp.data);
@@ -41,6 +43,7 @@ router.get("/blog/posts", auth, largeLimiter, (req, res) => {
 });
 
 router.post("/blog/editpost", auth, verifyAdmin, (req, res) => {
+  //@ts-ignore
   api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   api.post(req.path, req.body).then(resp => {
     res.send(resp.data);
@@ -50,6 +53,7 @@ router.post("/blog/editpost", auth, verifyAdmin, (req, res) => {
 });
 
 router.post("/blog/removepost", auth, verifyAdmin, (req, res) => {
+  //@ts-ignore
   api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   api.post(req.path, req.body).then(resp => {
     res.send(resp.data);
@@ -59,4 +63,3 @@ router.post("/blog/removepost", auth, verifyAdmin, (req, res) => {
 });
 
 export { router as BlogService };
-

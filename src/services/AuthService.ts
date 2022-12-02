@@ -8,8 +8,8 @@ const api = apiAdapter(baseURL);
 const router = Router();
 
 router.post("/auth/login", auth, rateLimiter, (req, res) => {
-  const authToken?: string | number | boolean = req.header('x-auth-token');
-  api.defaults.headers.common['x-auth-token'] = authToken;
+  //@ts-ignore
+  api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   
   api.post(req.path, req.body).then(resp => {
     res.send(resp.data);
@@ -17,6 +17,7 @@ router.post("/auth/login", auth, rateLimiter, (req, res) => {
 });
 
 router.post("/auth/register", auth, verifyAdmin, (req, res) => {
+  //@ts-ignore
   api.defaults.headers.common['x-auth-token'] = req.header('x-auth-token');
   api.post(req.path, req.body).then(resp => {
     res.send(resp.data);
